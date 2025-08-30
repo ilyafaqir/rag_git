@@ -70,14 +70,14 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading, disable
         <button
           type="submit"
           disabled={!message.trim() || isLoading || disabled}
-          className="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+          className="bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-gray-300 dark:disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors"
         >
           <Send className="w-5 h-5" />
         </button>
       </div>
       
       {message.length > 0 && (
-        <div className="mt-2 text-xs text-gray-500 text-right">
+        <div className="mt-2 text-xs text-gray-500 dark:text-gray-400 text-right">
           {message.length}/1000 caractères
         </div>
       )}

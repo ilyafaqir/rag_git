@@ -47,7 +47,7 @@ const ParticleBackground: React.FC = () => {
           speedX: (Math.random() - 0.5) * 0.5,
           speedY: (Math.random() - 0.5) * 0.5,
           opacity: Math.random() * 0.5 + 0.2,
-          color: `hsl(${Math.random() * 60 + 200}, 70%, 60%)` // Bleus et violets
+          color: `hsl(${Math.random() * 60 + 200}, 70%, ${Math.random() * 20 + 50}%)` // Bleus et violets avec variation
         })
       }
       particlesRef.current = particles

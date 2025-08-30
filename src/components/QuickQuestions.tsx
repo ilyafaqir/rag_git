@@ -47,8 +47,8 @@ const QuickQuestions: React.FC<QuickQuestionsProps> = ({ onQuestionClick }) => {
   ]
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">Questions fréquentes</h3>
+    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 mb-4 transition-colors duration-300">
+      <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Questions fréquentes</h3>
       <div className="overflow-x-auto">
         <div className="flex flex-nowrap gap-4 pb-2">
           {questionCategories.map((category, categoryIndex) => (
@@ -57,9 +57,9 @@ const QuickQuestions: React.FC<QuickQuestionsProps> = ({ onQuestionClick }) => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: categoryIndex * 0.1 }}
-              className="min-w-[260px] max-w-xs bg-blue-50 rounded-xl p-3 flex-shrink-0 flex flex-col gap-2 border border-blue-100"
+              className="min-w-[260px] max-w-xs bg-blue-50 dark:bg-gray-700 rounded-xl p-3 flex-shrink-0 flex flex-col gap-2 border border-blue-100 dark:border-gray-600"
             >
-              <div className="flex items-center space-x-2 text-blue-600 font-medium mb-1">
+              <div className="flex items-center space-x-2 text-blue-600 dark:text-blue-400 font-medium mb-1">
                 {category.icon}
                 <span>{category.title}</span>
               </div>
@@ -68,7 +68,7 @@ const QuickQuestions: React.FC<QuickQuestionsProps> = ({ onQuestionClick }) => {
                   <button
                     key={questionIndex}
                     onClick={() => onQuestionClick(question)}
-                    className="block w-full text-left p-2 text-xs md:text-sm text-gray-700 bg-white hover:bg-blue-100 hover:text-blue-700 rounded-lg transition-colors border border-transparent hover:border-blue-200 shadow-sm"
+                    className="block w-full text-left p-2 text-xs md:text-sm text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-600 hover:bg-blue-100 dark:hover:bg-gray-500 hover:text-blue-700 dark:hover:text-blue-300 rounded-lg transition-colors border border-transparent hover:border-blue-200 dark:hover:border-gray-400 shadow-sm"
                   >
                     {question}
                   </button>
