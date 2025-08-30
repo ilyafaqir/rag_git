@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Chatbot from './components/Chatbot'
 import Header from './components/Header'
 import { ThemeProvider } from './contexts/ThemeContext'
