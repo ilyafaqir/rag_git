@@ -7,12 +7,15 @@ import ChatInput from './ChatInput'
 import TypingIndicator from './TypingIndicator'
 import QuickQuestions from './QuickQuestions'
 import ApiStatus from './ApiStatus'
+import ParticleBackground from './ParticleBackground'
+import ConfettiEffect from './ConfettiEffect'
 import { RefreshCw, Trash2 } from 'lucide-react'
 
 const Chatbot: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([])
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [showConfetti, setShowConfetti] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   // Charger l'historique au démarrage
@@ -61,6 +64,9 @@ const Chatbot: React.FC = () => {
       const botMessage = createMessage(botResponse, 'bot')
       
       setMessages(prev => [...prev, botMessage])
+      
+      // Déclencher les confettis pour célébrer la réponse
+      setShowConfetti(true)
     } catch (err) {
       setError('Une erreur est survenue lors de la génération de la réponse.')
       console.error('Erreur chatbot:', err)

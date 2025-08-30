@@ -37,25 +37,57 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
+      initial={{ opacity: 0, y: 20, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ 
+        duration: 0.4, 
+        ease: "easeOut",
+        type: "spring",
+        stiffness: 100
+      }}
+      whileHover={{ scale: 1.02 }}
       className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`}
     >
       <div className={`flex items-start space-x-3 max-w-[70%] ${isUser ? 'flex-row-reverse space-x-reverse' : ''}`}>
-        <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-          isUser 
-            ? 'bg-blue-500 text-white' 
-            : 'bg-gray-200 text-gray-700'
-        }`}>
-          {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
-        </div>
+        <motion.div 
+          className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg ${
+            isUser 
+              ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white' 
+              : 'bg-gradient-to-br from-gray-200 to-gray-300 text-gray-700'
+          }`}
+          whileHover={{ scale: 1.1, rotate: 5 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          <motion.div
+            animate={{ 
+              rotate: isUser ? [0, 360] : 0,
+              scale: [1, 1.1, 1]
+            }}
+            transition={{ 
+              duration: isUser ? 2 : 0,
+              repeat: isUser ? Infinity : 0,
+              ease: "linear"
+            }}
+          >
+            {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
+          </motion.div>
+        </motion.div>
         
-        <div className={`rounded-lg px-4 py-3 shadow-sm relative ${
-          isUser 
-            ? 'bg-blue-500 text-white' 
-            : 'bg-white text-gray-900 border border-gray-200'
-        }`}>
+        <motion.div 
+          className={`rounded-xl px-4 py-3 shadow-lg relative backdrop-blur-sm ${
+            isUser 
+              ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white' 
+              : 'bg-gradient-to-br from-white to-gray-50 text-gray-900 border border-gray-200'
+          }`}
+          animate={{
+            boxShadow: [
+              "0 4px 6px rgba(0,0,0,0.1)",
+              "0 8px 25px rgba(0,0,0,0.15)",
+              "0 4px 6px rgba(0,0,0,0.1)"
+            ]
+          }}
+          transition={{ duration: 3, repeat: Infinity }}
+        >
           <p className="text-sm leading-relaxed whitespace-pre-line">{mainContent}</p>
           {/* Affichage des sources */}
           {sources.length > 0 && (
@@ -74,17 +106,32 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
           )}
           {/* Bouton copier */}
           {!isUser && (
-            <button
+            <motion.button
               onClick={handleCopy}
-              className="absolute top-2 right-2 p-1 text-gray-400 hover:text-blue-600 transition-colors"
+              className="absolute top-2 right-2 p-1 text-gray-400 hover:text-blue-600 transition-colors rounded-lg hover:bg-blue-50"
               title="Copier la réponse"
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
-              <Copy className="w-4 h-4" />
-            </button>
+              <motion.div
+                animate={{ rotate: copied ? 360 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Copy className="w-4 h-4" />
+              </motion.div>
+            </motion.button>
           )}
           {/* Notification copié */}
           {copied && (
-            <span className="absolute top-2 right-10 bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded shadow">Copié !</span>
+            <motion.span 
+              initial={{ opacity: 0, scale: 0.8, x: 10 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              exit={{ opacity: 0, scale: 0.8, x: 10 }}
+              className="absolute top-2 right-10 bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 text-xs px-2 py-1 rounded-lg shadow-lg border border-green-200"
+            >
+              ✓ Copié !
+            </motion.span>
           )}
           <p className={`text-xs mt-2 ${
             isUser ? 'text-blue-100' : 'text-gray-500'
