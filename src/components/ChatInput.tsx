@@ -35,7 +35,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading, disable
   }, [message])
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white border-t border-gray-200 p-4">
+    <form onSubmit={handleSubmit} className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 p-4 transition-colors duration-300">
       <div className="flex items-end space-x-3">
         <div className="flex-1 relative">
           <textarea
@@ -45,21 +45,21 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage, isLoading, disable
             onKeyPress={handleKeyPress}
             placeholder="Tapez votre message..."
             disabled={isLoading || disabled}
-            className="w-full resize-none border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-50 disabled:text-gray-500"
+            className="w-full resize-none border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent disabled:bg-gray-50 dark:disabled:bg-gray-600 disabled:text-gray-500 dark:disabled:text-gray-400 placeholder-gray-500 dark:placeholder-gray-400"
             rows={1}
             maxLength={1000}
           />
           <div className="absolute bottom-2 right-2 flex items-center space-x-2">
             <button
               type="button"
-              className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
+              className="p-1 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
               disabled={isLoading || disabled}
             >
               <Paperclip className="w-4 h-4" />
             </button>
             <button
               type="button"
-              className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
+              className="p-1 text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300 transition-colors"
               disabled={isLoading || disabled}
             >
               <Smile className="w-4 h-4" />

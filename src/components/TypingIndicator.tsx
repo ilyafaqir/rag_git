@@ -36,7 +36,7 @@ const TypingIndicator: React.FC = () => {
         </motion.div>
         
         <motion.div 
-          className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl px-4 py-3 shadow-sm backdrop-blur-sm relative overflow-hidden"
+          className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-700 dark:to-gray-600 border border-blue-200 dark:border-gray-600 rounded-xl px-4 py-3 shadow-sm backdrop-blur-sm relative overflow-hidden"
           animate={{ 
             boxShadow: [
               "0 1px 3px rgba(0,0,0,0.1)",
@@ -49,7 +49,7 @@ const TypingIndicator: React.FC = () => {
           <div className="flex items-center space-x-2">
             <WaveAnimation isActive={true} />
             <motion.span 
-              className="text-sm text-blue-600 font-medium"
+              className="text-sm text-blue-600 dark:text-blue-400 font-medium"
               animate={{ opacity: [0.7, 1, 0.7] }}
               transition={{ duration: 2, repeat: Infinity }}
             >

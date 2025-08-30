@@ -77,7 +77,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
           className={`rounded-xl px-4 py-3 shadow-lg relative backdrop-blur-sm ${
             isUser 
               ? 'bg-gradient-to-br from-blue-500 to-blue-600 text-white' 
-              : 'bg-gradient-to-br from-white to-gray-50 text-gray-900 border border-gray-200'
+              : 'bg-gradient-to-br from-white to-gray-50 dark:from-gray-700 dark:to-gray-600 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-600'
           }`}
           animate={{
             boxShadow: [
@@ -91,7 +91,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
           <p className="text-sm leading-relaxed whitespace-pre-line">{mainContent}</p>
           {/* Affichage des sources */}
           {sources.length > 0 && (
-            <div className="mt-2 text-xs text-blue-700">
+            <div className="mt-2 text-xs text-blue-700 dark:text-blue-300">
               <div className="font-semibold mb-1">Sources consultées :</div>
               <ul className="list-disc list-inside">
                 {sources.map((src, i) => (
@@ -102,13 +102,13 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
           )}
           {/* Affichage de la confiance */}
           {confidence && (
-            <div className="mt-1 text-xs text-purple-700">Confiance : {confidence}</div>
+            <div className="mt-1 text-xs text-purple-700 dark:text-purple-300">Confiance : {confidence}</div>
           )}
           {/* Bouton copier */}
           {!isUser && (
             <motion.button
               onClick={handleCopy}
-              className="absolute top-2 right-2 p-1 text-gray-400 hover:text-blue-600 transition-colors rounded-lg hover:bg-blue-50"
+              className="absolute top-2 right-2 p-1 text-gray-400 dark:text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors rounded-lg hover:bg-blue-50 dark:hover:bg-gray-600"
               title="Copier la réponse"
               whileHover={{ scale: 1.1, rotate: 5 }}
               whileTap={{ scale: 0.95 }}
@@ -134,7 +134,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message }) => {
             </motion.span>
           )}
           <p className={`text-xs mt-2 ${
-            isUser ? 'text-blue-100' : 'text-gray-500'
+            isUser ? 'text-blue-100' : 'text-gray-500 dark:text-gray-400'
           }`}>
             {message.timestamp.toLocaleTimeString('fr-FR', { 
               hour: '2-digit', 
